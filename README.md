@@ -143,3 +143,12 @@ Verification achieved **100.00% Coverage Closure** across all physical, structur
 ├── config.mk                           # Environment paths & EDA tool configurations
 ├── Makefile                            # Automated build, simulation & regression script
 └── README.md                           # Comprehensive project documentation
+
+## Author
+
+| Name | Hoàng Ngọc Gia Bão |
+| :--- | :--- |
+| **University** | FPT University |
+| **Email** | [baohoang037@gmail.com](mailto:baohoang037@gmail.com) |
+| **LinkedIn** | [linkedin.com/in/hoang-ngoc-gia-bao-883124235](https://www.linkedin.com/in/hoang-ngoc-gia-bao-883124235) |
+| **GitHub** | [github.com/baohoang037](https://github.com/baohoang037) |
