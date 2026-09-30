@@ -148,12 +148,12 @@ Verification achieved **100.00% Coverage Closure** across all physical, structur
 ---
 
 <a id="author"></a>
-Author
+<h2><strong>👨‍💻 Author</strong></h2>
 <table>
   <tr>
     <td colspan="3" align="center">
       <br>
-      <h2>Hoàng Ngọc Gia Bão</h2>
+      <h2>⚡ Hoàng Ngọc Gia Bão</h2>
       <p><b>Integrated Circuit Design · FPT University</b></p>
       <br>
       <p><b>📬 Connect with me</b></p>
