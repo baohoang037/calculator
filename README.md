@@ -125,7 +125,7 @@ Verification achieved **100.00% Coverage Closure** across all physical, structur
 
 ```text
 ├── docs/                               # Architectural diagrams, waveform captures & formal documentation
-│   ├── Scalable_FPGA_Calculator_Design_Specification_and_Report.docx
+│   ├── Scalable_FPGA_Calculator_Design_Specification_and_Report.pdf
 │   ├── Calculator_IP_Verification_Plan.xlsx
 │   ├── architecture_diagram.png
 │   ├── waveform_verification.png
