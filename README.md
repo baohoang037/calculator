@@ -12,7 +12,7 @@
   <b>A parameterizable, synchronous arithmetic execution processor featuring zero-stall dual-bus asynchronous operand fetching, 32-bit extended precision DSP-accelerated execution, hardware zero-division protection, and 100% code & functional coverage closure.</b>
 </p>
 
-[📚 Architecture Docs](#-hardware-architecture--dataflow) • [⚙️ Specifications](#-architectural-specifications--operation-decoding) • [🔬 Verification & Waveforms](#-simulation-results--waveform-analysis) • [📊 100% Coverage Closure](#-verification-plan--coverage-closure) • [🚀 Quickstart](#-automated-build-infrastructure-makefile)
+[📚 Architecture Docs](#-hardware-architecture--dataflow) • [⚙️ Specifications](#-architectural-specifications--operation-decoding) • [🔬 Verification & Waveforms](#-simulation-results--waveform-analysis) • [📊 100% Coverage Closure](#-verification-plan--coverage-closure) • [🚀 Quickstart](#-automated-build-infrastructure-makefile) • [👨‍💻 Author](#author)
 
 ---
 
@@ -37,7 +37,7 @@ The system partitions functionality into dedicated sub-blocks to optimize timing
 
 ### Sub-Module Responsibilities
 * **`calculator_top` (Integration & Pipeline Control):** Coordinates synchronous data ingestion, routes internal address paths, and registers ALU outputs to maintain clean clock-to-output timing (`result_valid`, `div_by_zero_flag`).
-* **`storage_unit` (Dual-Read Register File):** Parameterizable $N$-word bank (default $4 \times 16\text{-bit}$ registers) with 1 synchronous write port and **2 independent combinational read ports** for concurrent, zero-stall dual-operand retrieval.
+* **`storage_unit` (Dual-Read Register File):** Parameterizable $N$-word bank (default $4 \times 16$-bit registers) with 1 synchronous write port and **2 independent combinational read ports** for concurrent, zero-stall dual-operand retrieval.
 * **`alu_core` (Combinational Datapath Core):** Purely combinational arithmetic core implementing sign-extended Addition, Subtraction, high-speed Multiplication (mapping to embedded FPGA DSP blocks), and Division with real-time zero-denominator detection.
 
 ---
@@ -46,20 +46,20 @@ The system partitions functionality into dedicated sub-blocks to optimize timing
 
 ### 1. Hardware Interface Signals
 
-| Signal Name | Bit-Width | Direction | Domain | Functional Description |
-| :--- | :---: | :---: | :---: | :--- |
-| `clk` | 1 | Input | System Clock | Primary system clock (50 MHz reference, 20 ns period). |
-| `rst_n` | 1 | Input | Asynchronous | Active-low reset. Synchronously clears registers and control flags. |
-| `wr_en` | 1 | Input | `clk` (sync) | Synchronous write enable strobe for the storage unit. |
-| `wr_addr` | $\lceil\log_2(\text{NUM\_REGS})\rceil$ | Input | `clk` (sync) | Target register destination address (`2'b00` to `2'b11`). |
-| `data_in` | `DATA_WIDTH` (16) | Input | `clk` (sync) | 16-bit signed input data to be committed to register bank. |
-| `rd_addr_a` | $\lceil\log_2(\text{NUM\_REGS})\rceil$ | Input | Combinational | Source address pointer for Operand A. |
-| `rd_addr_b` | $\lceil\log_2(\text{NUM\_REGS})\rceil$ | Input | Combinational | Source address pointer for Operand B. |
-| `opcode` | 3 | Input | `clk` (sync) | Operation selection code (`NOP`, `ADD`, `SUB`, `MUL`, `DIV`). |
-| `op_valid` | 1 | Input | `clk` (sync) | Operation execution strobe indicating valid command input. |
-| `data_out` | `OUT_WIDTH` (32) | Output | `clk` (sync) | Registered 32-bit signed computational result. |
-| `result_valid` | 1 | Output | `clk` (sync) | Active-high validity flag. Asserts exactly 1 cycle after `op_valid`. |
-| `div_by_zero_flag` | 1 | Output | `clk` (sync) | Dedicated hardware exception flag indicating zero denominator. |
+| Signal Name | Bit-Width | Direction | Domain | Reset State | Functional Description |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| `clk` | 1 | Input | System Clock | N/A | Primary system clock (50 MHz reference, 20 ns period). |
+| `rst_n` | 1 | Input | Asynchronous | Active-Low | System reset. Synchronously clears registers and control flags. |
+| `wr_en` | 1 | Input | `clk` (sync) | N/A | Synchronous write enable strobe for the storage unit. |
+| `wr_addr` | 2 (`$clog2(NUM_REGS)`) | Input | `clk` (sync) | N/A | Target register destination address (`2'b00` to `2'b11`). |
+| `data_in` | 16 (`DATA_WIDTH`) | Input | `clk` (sync) | N/A | 16-bit signed input data to be committed to register bank. |
+| `rd_addr_a` | 2 (`$clog2(NUM_REGS)`) | Input | Combinational | N/A | Source address pointer for Operand A. |
+| `rd_addr_b` | 2 (`$clog2(NUM_REGS)`) | Input | Combinational | N/A | Source address pointer for Operand B. |
+| `opcode` | 3 | Input | `clk` (sync) | N/A | Operation selection code (`NOP`, `ADD`, `SUB`, `MUL`, `DIV`). |
+| `op_valid` | 1 | Input | `clk` (sync) | N/A | Operation execution strobe indicating valid command input. |
+| `data_out` | 32 (`OUT_WIDTH`) | Output | `clk` (sync) | `32'sh0` | Registered 32-bit signed computational result. |
+| `result_valid` | 1 | Output | `clk` (sync) | `1'b0` | Active-high validity flag. Asserts exactly 1 cycle after `op_valid`. |
+| `div_by_zero_flag` | 1 | Output | `clk` (sync) | `1'b0` | Dedicated hardware exception flag indicating zero denominator. |
 
 ### 2. Instruction Decoding & Arithmetic Constraints
 
