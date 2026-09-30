@@ -156,12 +156,6 @@ Verification achieved **100.00% Coverage Closure** across all physical, structur
     <td align="center">
       <h3>⚡ Hoàng Ngọc Gia Bão</h3>
       <p><b>Integrated Circuit Design · FPT University</b></p>
-      <p>🧩 RTL Design &nbsp; · &nbsp; 🔬 Design Verification &nbsp; · &nbsp; 🧮 FPGA</p>
-      <p>
-        <img src="https://img.shields.io/badge/RTL-SystemVerilog-1B365D?style=for-the-badge" alt="RTL: SystemVerilog">
-        <img src="https://img.shields.io/badge/Verification-QuestaSim-008B9A?style=for-the-badge" alt="Verification: QuestaSim">
-        <img src="https://img.shields.io/badge/FPGA-Intel%20Quartus-E05A47?style=for-the-badge" alt="FPGA: Intel Quartus">
-      </p>
       <hr>
       <p><b>📬 Connect with me</b></p>
       <p>
