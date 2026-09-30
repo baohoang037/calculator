@@ -1,0 +1,526 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /tb_calculator_top/dut/u_storage
+=== Design Unit: work.storage_unit
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         3         3         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /tb_calculator_top/dut/u_storage
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/rtl/storage_unit.sv
+------------------------------------IF Branch------------------------------------
+    19                                        16     Count coming in to IF
+    19              1                          4             if (!rst_n) begin
+    23              1                          8             end else if (wr_en) begin
+                                               4     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       7         7         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /tb_calculator_top/dut/u_storage --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/rtl/storage_unit.sv
+    1                                                module storage_unit #(
+    2                                                    parameter int DATA_WIDTH = 16,
+    3                                                    parameter int NUM_REGS   = 4
+    4                                                ) (
+    5                                                    input  logic                          clk,
+    6                                                    input  logic                          rst_n,
+    7                                                    input  logic                          wr_en,
+    8                                                    input  logic [$clog2(NUM_REGS)-1:0]  wr_addr,
+    9                                                    input  logic signed [DATA_WIDTH-1:0]  wr_data,
+    10                                                   input  logic [$clog2(NUM_REGS)-1:0]  rd_addr_a,
+    11                                                   input  logic [$clog2(NUM_REGS)-1:0]  rd_addr_b,
+    12                                                   output logic signed [DATA_WIDTH-1:0]  rd_data_a,
+    13                                                   output logic signed [DATA_WIDTH-1:0]  rd_data_b
+    14                                               );
+    15                                               
+    16                                                   logic signed [DATA_WIDTH-1:0] reg_bank [0:NUM_REGS-1];
+    17                                               
+    18              1                         16         always_ff @(posedge clk or negedge rst_n) begin
+    19                                                       if (!rst_n) begin
+    20              1                          4                 for (int i = 0; i < NUM_REGS; i++) begin
+    20              2                         16     
+    21              1                         16                     reg_bank[i] <= '0;
+    22                                                           end
+    23                                                       end else if (wr_en) begin
+    24              1                          8                 reg_bank[wr_addr] <= wr_data;
+    25                                                       end
+    26                                                   end
+    27                                               
+    28              1                         17         assign rd_data_a = reg_bank[rd_addr_a];
+    29              1                         18         assign rd_data_b = reg_bank[rd_addr_b];
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         64        64         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /tb_calculator_top/dut/u_storage --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                   rd_data_a[0-15]           1           1      100.00 
+                                   rd_data_b[0-15]           1           1      100.00 
+
+Total Node Count     =         32 
+Toggled Node Count   =         32 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (64 of 64 bins)
+
+=================================================================================
+=== Instance: /tb_calculator_top/dut/u_alu
+=== Design Unit: work.alu_core
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         7         7         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /tb_calculator_top/dut/u_alu
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/rtl/alu_core.sv
+------------------------------------CASE Branch------------------------------------
+    16                                        16     Count coming in to CASE
+    17              1                          3                 3'b001: alu_result = 32'(operand_a) + 32'(operand_b); // ADD
+    18              1                          4                 3'b010: alu_result = 32'(operand_a) - 32'(operand_b); // SUB
+    19              1                          1                 3'b011: alu_result = 32'(operand_a) * 32'(operand_b); // MUL
+    20              1                          2                 3'b100: begin                                         // DIV
+    28              1                          6                 default: begin
+Branch totals: 5 hits of 5 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    21                                         2     Count coming in to IF
+    21              1                          1                     if (operand_b == '0) begin
+    24              1                          1                     end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      11        11         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /tb_calculator_top/dut/u_alu --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/rtl/alu_core.sv
+    1                                                module alu_core #(
+    2                                                    parameter int IN_WIDTH  = 16,
+    3                                                    parameter int OUT_WIDTH = 32
+    4                                                ) (
+    5                                                    input  logic [2:0]                   opcode,
+    6                                                    input  logic signed [IN_WIDTH-1:0]   operand_a,
+    7                                                    input  logic signed [IN_WIDTH-1:0]   operand_b,
+    8                                                    output logic signed [OUT_WIDTH-1:0]  alu_result,
+    9                                                    output logic                         zero_div_err
+    10                                               );
+    11                                               
+    12              1                         16         always_comb begin
+    13              1                         16             alu_result   = '0;
+    14              1                         16             zero_div_err = 1'b0;
+    15                                               
+    16                                                       case (opcode)
+    17              1                          3                 3'b001: alu_result = 32'(operand_a) + 32'(operand_b); // ADD
+    18              1                          4                 3'b010: alu_result = 32'(operand_a) - 32'(operand_b); // SUB
+    19              1                          1                 3'b011: alu_result = 32'(operand_a) * 32'(operand_b); // MUL
+    20                                                           3'b100: begin                                         // DIV
+    21                                                               if (operand_b == '0) begin
+    22              1                          1                         zero_div_err = 1'b1;
+    23              1                          1                         alu_result   = '0;
+    24                                                               end else begin
+    25              1                          1                         alu_result   = 32'(operand_a / operand_b);
+    26                                                               end
+    27                                                           end
+    28                                                           default: begin
+    29              1                          6                     alu_result   = '0;
+    30              1                          6                     zero_div_err = 1'b0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         66        66         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /tb_calculator_top/dut/u_alu --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                  alu_result[0-31]           1           1      100.00 
+                                      zero_div_err           1           1      100.00 
+
+Total Node Count     =         33 
+Toggled Node Count   =         33 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (66 of 66 bins)
+
+=================================================================================
+=== Instance: /tb_calculator_top/dut
+=== Design Unit: work.calculator_top
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         4         4         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /tb_calculator_top/dut
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/rtl/calculator_top.sv
+------------------------------------IF Branch------------------------------------
+    51                                        18     Count coming in to IF
+    51              1                          4             if (!rst_n) begin
+    55              1                         14             end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    57                                        14     Count coming in to IF
+    57              1                         10                 if (op_valid) begin
+    60              1                          4                 end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       8         8         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /tb_calculator_top/dut --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/rtl/calculator_top.sv
+    1                                                module calculator_top #(
+    2                                                    parameter int DATA_WIDTH = 16,
+    3                                                    parameter int OUT_WIDTH  = 32,
+    4                                                    parameter int NUM_REGS   = 4
+    5                                                ) (
+    6                                                    input  logic                          clk,
+    7                                                    input  logic                          rst_n,
+    8                                                    input  logic                          wr_en,
+    9                                                    input  logic [$clog2(NUM_REGS)-1:0]  wr_addr,
+    10                                                   input  logic signed [DATA_WIDTH-1:0]  data_in,
+    11                                                   input  logic [$clog2(NUM_REGS)-1:0]  rd_addr_a,
+    12                                                   input  logic [$clog2(NUM_REGS)-1:0]  rd_addr_b,
+    13                                                   input  logic [2:0]                    opcode,
+    14                                                   input  logic                          op_valid,
+    15                                                   output logic signed [OUT_WIDTH-1:0]   data_out,
+    16                                                   output logic                          result_valid,
+    17                                                   output logic                          div_by_zero_flag
+    18                                               );
+    19                                               
+    20                                                   logic signed [DATA_WIDTH-1:0] op_a, op_b;
+    21                                                   logic signed [OUT_WIDTH-1:0]  alu_out_comb;
+    22                                                   logic                         zero_err_comb;
+    23                                               
+    24                                                   storage_unit #(
+    25                                                       .DATA_WIDTH(DATA_WIDTH),
+    26                                                       .NUM_REGS  (NUM_REGS)
+    27                                                   ) u_storage (
+    28                                                       .clk       (clk),
+    29                                                       .rst_n     (rst_n),
+    30                                                       .wr_en     (wr_en),
+    31                                                       .wr_addr   (wr_addr),
+    32                                                       .wr_data   (data_in),
+    33                                                       .rd_addr_a (rd_addr_a),
+    34                                                       .rd_addr_b (rd_addr_b),
+    35                                                       .rd_data_a (op_a),
+    36                                                       .rd_data_b (op_b)
+    37                                                   );
+    38                                               
+    39                                                   alu_core #(
+    40                                                       .IN_WIDTH  (DATA_WIDTH),
+    41                                                       .OUT_WIDTH (OUT_WIDTH)
+    42                                                   ) u_alu (
+    43                                                       .opcode       (opcode),
+    44                                                       .operand_a    (op_a),
+    45                                                       .operand_b    (op_b),
+    46                                                       .alu_result   (alu_out_comb),
+    47                                                       .zero_div_err (zero_err_comb)
+    48                                                   );
+    49                                               
+    50              1                         18         always_ff @(posedge clk or negedge rst_n) begin
+    51                                                       if (!rst_n) begin
+    52              1                          4                 data_out         <= '0;
+    53              1                          4                 result_valid     <= 1'b0;
+    54              1                          4                 div_by_zero_flag <= 1'b0;
+    55                                                       end else begin
+    56              1                         14                 result_valid     <= op_valid;
+    57                                                           if (op_valid) begin
+    58              1                         10                     data_out         <= alu_out_comb;
+    59              1                         10                     div_by_zero_flag <= zero_err_comb;
+    60                                                           end else begin
+    61              1                          4                     div_by_zero_flag <= 1'b0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        198       198         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /tb_calculator_top/dut --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                alu_out_comb[0-31]           1           1      100.00 
+                                    data_out[0-31]           1           1      100.00 
+                                  div_by_zero_flag           1           1      100.00 
+                                        op_a[0-15]           1           1      100.00 
+                                        op_b[0-15]           1           1      100.00 
+                                      result_valid           1           1      100.00 
+                                     zero_err_comb           1           1      100.00 
+
+Total Node Count     =         99 
+Toggled Node Count   =         99 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (198 of 198 bins)
+
+=================================================================================
+=== Instance: /tb_calculator_top
+=== Design Unit: work.tb_calculator_top
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      66        66         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /tb_calculator_top --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File /home/bao/my_project/calculator/tb/tb_calculator_top.sv
+    3                                                module tb_calculator_top;
+    4                                                
+    5                                                    localparam int DATA_WIDTH = 16;
+    6                                                    localparam int OUT_WIDTH  = 32;
+    7                                                    localparam int NUM_REGS   = 4;
+    8                                                
+    9                                                    logic                          clk;
+    10                                                   logic                          rst_n;
+    11                                                   logic                          wr_en;
+    12                                                   logic [$clog2(NUM_REGS)-1:0]  wr_addr;
+    13                                                   logic signed [DATA_WIDTH-1:0]  data_in;
+    14                                                   logic [$clog2(NUM_REGS)-1:0]  rd_addr_a;
+    15                                                   logic [$clog2(NUM_REGS)-1:0]  rd_addr_b;
+    16                                                   logic [2:0]                    opcode;
+    17                                                   logic                          op_valid;
+    18                                                   logic signed [OUT_WIDTH-1:0]   data_out;
+    19                                                   logic                          result_valid;
+    20                                                   logic                          div_by_zero_flag;
+    21                                               
+    22                                                   int error_count = 0;
+    23                                               
+    24                                                   // Instantiate DUT
+    25                                                   calculator_top #(
+    26                                                       .DATA_WIDTH(DATA_WIDTH),
+    27                                                       .OUT_WIDTH (OUT_WIDTH),
+    28                                                       .NUM_REGS  (NUM_REGS)
+    29                                                   ) dut (.*);
+    30                                               
+    31                                                   // Clock Generation: 50MHz (Period = 20ns)
+    32              1                          1         initial clk = 0;
+    33              1                         58         always #10 clk = ~clk;
+    33              2                         57     
+    34                                               
+    35                                                   // Coverage sample ngầm định (QuestaSim sẽ ghi nhận qua cờ makefile)
+    36                                                   covergroup cg_calculator @(posedge clk);
+    37                                                       cp_opcode: coverpoint opcode {
+    38                                                           bins op_nop = {3'b000};
+    39                                                           bins op_add = {3'b001};
+    40                                                           bins op_sub = {3'b010};
+    41                                                           bins op_mul = {3'b011};
+    42                                                           bins op_div = {3'b100};
+    43                                                       }
+    44                                                       cp_div_err: coverpoint div_by_zero_flag {
+    45                                                           bins no_error  = {1'b0};
+    46                                                           bins has_error = {1'b1};
+    47                                                       }
+    48                                                   endgroup
+    49                                               
+    50              1                          1         cg_calculator cov_inst = new();
+    51                                               
+    52                                                   // Reusable Tasks
+    53                                                   task automatic write_reg(input logic [1:0] addr, input logic signed [15:0] val);
+    54              1                          8             @(negedge clk);
+    55              1                          8             wr_en   <= 1'b1;
+    56              1                          8             wr_addr <= addr;
+    57              1                          8             data_in <= val;
+    58              1                          8             @(posedge clk);
+    59              1                          8             #1;
+    60              1                          8             wr_en   <= 1'b0;
+    61                                                   endtask
+    62                                               
+    63                                                   task automatic run_op(
+    64                                                       input logic [2:0]  op,
+    65                                                       input logic [1:0]  a,
+    66                                                       input logic [1:0]  b,
+    67                                                       input logic signed [31:0] exp_out,
+    68                                                       input logic        exp_err
+    69                                                   );
+    70              1                         10             @(negedge clk);
+    71              1                         10             opcode    <= op;
+    72              1                         10             rd_addr_a <= a;
+    73              1                         10             rd_addr_b <= b;
+    74              1                         10             op_valid  <= 1'b1;
+    75                                               
+    76              1                         10             @(posedge clk);
+    77              1                         10             #1;
+    78              1                         10             op_valid  <= 1'b0;
+    79                                               
+    80                                                       assert (result_valid === 1'b1)
+    81                                                           else $error("[FAIL] result_valid is 0!");
+    82                                               
+    83                                                       assert (data_out === exp_out && div_by_zero_flag === exp_err)
+    84                                                           else $error("[FAIL] Op %0d Mismatch!", op);
+    85                                               
+    86              1                         10             $display("[PASS] Op %0b (R%0d, R%0d) -> Out=%0d, Err=%b", 
+    87                                                                op, a, b, data_out, div_by_zero_flag);
+    88                                                   endtask
+    89                                               
+    90                                                   // Reset Task
+    91                                                   task automatic apply_reset();
+    92              1                          1             rst_n     <= 1'b0;
+    93              1                          1             wr_en     <= 1'b0;
+    94              1                          1             wr_addr   <= '0;
+    95              1                          1             data_in   <= '0;
+    96              1                          1             rd_addr_a <= '0;
+    97              1                          1             rd_addr_b <= '0;
+    98              1                          1             opcode    <= '0;
+    99              1                          1             op_valid  <= 1'b0;
+    100             1                          3             repeat (3) @(posedge clk);
+    100             2                          3     
+    101             1                          1             rst_n     <= 1'b1;
+    102             1                          1             @(posedge clk);
+
+  File /home/bao/my_project/calculator/tc/tc_basic_arithmetic.sv
+    3                                                // Description: Full 100% RTL Coverage Testcase (Clean Math & No Mismatches)
+    4                                                // ============================================================================
+    5                                                
+    6                                                initial begin
+    7               1                          1         $display("-----------------------------------------------------");
+    8               1                          1         $display("STARTING TESTCASE: tc_basic_arithmetic (100%% Coverage Target)");
+    9               1                          1         $display("-----------------------------------------------------");
+    10                                               
+    11                                                   // 1. Initial Reset
+    12              1                          1         apply_reset();
+    13                                               
+    14                                                   // 2. Data Ingestion: Nap cac mau bit 0x5555, 0xAAAA, 0xFFFF, 0x0000
+    15              1                          1         write_reg(2'd0, 16'h5555);         // +21845
+    16              1                          1         write_reg(2'd1, 16'hAAAA);         // -21846 (signed 16-bit)
+    17              1                          1         write_reg(2'd2, 16'hFFFF);         // -1 (signed 16-bit)
+    18              1                          1         write_reg(2'd3, 16'h0000);         // 0
+    19                                               
+    20                                                   // 3. Kich Toggle 100% cho cac bit le/chan tren ca 2 cong A va B
+    21                                                   // ADD: R1 + R0 = (-21846) + 21845 = -1
+    22              1                          1         run_op(3'b001, 2'd1, 2'd0, -32'sd1, 1'b0);
+    23                                               
+    24                                                   // ADD: R0 + R1 = 21845 + (-21846) = -1
+    25              1                          1         run_op(3'b001, 2'd0, 2'd1, -32'sd1, 1'b0);
+    26                                               
+    27                                                   // SUB: R2 - R3 = (-1) - 0 = -1
+    28              1                          1         run_op(3'b010, 2'd2, 2'd3, -32'sd1, 1'b0);
+    29                                               
+    30                                                   // SUB: R3 - R2 = 0 - (-1) = 1
+    31              1                          1         run_op(3'b010, 2'd3, 2'd2, 32'sd1, 1'b0);
+    32                                               
+    33                                                   // 4. Nap lai du lieu thuong de test day du cac phep toan con lai
+    34              1                          1         write_reg(2'd0, 16'sd100);
+    35              1                          1         write_reg(2'd1, -16'sd25);
+    36              1                          1         write_reg(2'd2, 16'sd300);
+    37              1                          1         write_reg(2'd3, 16'sd0);
+    38                                               
+    39                                                   // 5. Test cac phep toan so hoc:
+    40              1                          1         run_op(3'b001, 2'd0, 2'd1, 32'sd75, 1'b0);    // ADD: 100 + (-25) = 75
+    41              1                          1         run_op(3'b010, 2'd0, 2'd1, 32'sd125, 1'b0);   // SUB: 100 - (-25) = 125
+    42              1                          1         run_op(3'b011, 2'd1, 2'd2, -32'sd7500, 1'b0); // MUL: (-25) * 300 = -7500
+    43              1                          1         run_op(3'b100, 2'd0, 2'd1, -32'sd4, 1'b0);    // DIV: 100 / (-25) = -4
+    44              1                          1         run_op(3'b100, 2'd0, 2'd3, 32'sd0, 1'b1);     // DIV BY ZERO
+    45              1                          1         run_op(3'b000, 2'd0, 2'd0, 32'sd0, 1'b0);     // NOP
+    46                                               
+    47                                                   // 6. Toggle lai chan reset de rst_n toggle du 100%
+    48              1                          1         @(negedge clk);
+    49              1                          1         rst_n <= 1'b0;
+    50              1                          1         @(posedge clk);
+    51              1                          1         #1;
+    52              1                          1         rst_n <= 1'b1;
+    53              1                          1         @(posedge clk);
+    54                                               
+    55              1                          5         repeat (5) @(posedge clk);
+    55              2                          5     
+    56                                               
+    57              1                          1         $display("-----------------------------------------------------");
+    58              1                          1         $display(">>> TEST STATUS: ALL CHECKS PASSED <<<");
+    59              1                          1         $display("-----------------------------------------------------");
+    60                                               
+    61              1                          1         $finish;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        126       126         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /tb_calculator_top --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                               clk           1           1      100.00 
+                                     data_in[0-15]           1           1      100.00 
+                                    data_out[0-31]           1           1      100.00 
+                                  div_by_zero_flag           1           1      100.00 
+                                          op_valid           1           1      100.00 
+                                       opcode[0-2]           1           1      100.00 
+                                    rd_addr_a[0-1]           1           1      100.00 
+                                    rd_addr_b[0-1]           1           1      100.00 
+                                      result_valid           1           1      100.00 
+                                             rst_n           1           1      100.00 
+                                      wr_addr[0-1]           1           1      100.00 
+                                             wr_en           1           1      100.00 
+
+Total Node Count     =         63 
+Toggled Node Count   =         63 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (126 of 126 bins)
+
+
+Total Coverage By Instance (filtered view): 100.00%
+

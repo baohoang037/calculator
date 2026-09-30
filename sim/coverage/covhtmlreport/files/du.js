@@ -1,0 +1,2 @@
+var g_data = {"data":[{"n":"work.alu_core","id":4,"zf":1,"tc":100.00,"s":100.00,"b":100.00,"t":100.00},{"n":"work.calculator_top","id":2,"zf":1,"tc":100.00,"s":100.00,"b":100.00,"t":100.00},{"n":"work.storage_unit","id":3,"zf":1,"tc":100.00,"s":100.00,"b":100.00,"t":100.00},{"n":"work.tb_calculator_top","id":1,"zf":1,"tc":100.00,"s":100.00,"t":100.00}]};
+processDuData(g_data);

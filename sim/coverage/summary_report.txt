@@ -1,0 +1,52 @@
+Coverage Report Summary Data by instance
+
+=================================================================================
+=== Instance: /tb_calculator_top/dut/u_storage
+=== Design Unit: work.storage_unit
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         3         3         0   100.00%
+    Statements                       7         7         0   100.00%
+    Toggles                         64        64         0   100.00%
+
+=================================================================================
+=== Instance: /tb_calculator_top/dut/u_alu
+=== Design Unit: work.alu_core
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         7         7         0   100.00%
+    Statements                      11        11         0   100.00%
+    Toggles                         66        66         0   100.00%
+
+=================================================================================
+=== Instance: /tb_calculator_top/dut
+=== Design Unit: work.calculator_top
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         4         4         0   100.00%
+    Statements                       8         8         0   100.00%
+    Toggles                        198       198         0   100.00%
+
+=================================================================================
+=== Instance: /tb_calculator_top
+=== Design Unit: work.tb_calculator_top
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Assertions                       2         2         0   100.00%
+    Covergroups                      1        na        na   100.00%
+        Coverpoints/Crosses          2        na        na        na
+            Covergroup Bins          7         7         0   100.00%
+    Statements                      66        66         0   100.00%
+    Toggles                        126       126         0   100.00%
+
+
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+
+TOTAL ASSERTION COVERAGE: 100.00%  ASSERTIONS: 2
+
+Total Coverage By Instance (filtered view): 100.00%
+

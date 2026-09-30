@@ -1,0 +1,136 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+!s11f vlog 2021.2_1 2021.05, May 15 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/home/bao/my_project/calculator/sim
+T_opt
+!s110 1790733294
+V483UkK=l25?0J^7_FL_Z_1
+Z2 04 17 4 work tb_calculator_top fast 0
+=1-000ae431a4f1-6abc6bee-46e54-846f
+!s102 +cover=bcesft
+Z3 !s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +cover=bcesft
+Z4 tCvgOpt 0
+n@_opt
+Z5 OL;O;2021.2_1;73
+R1
+T_opt1
+!s110 1790733918
+VGAkW>PK]TZV99DGA1MY1U2
+R2
+=1-000ae431a4f1-6abc6e5e-bc5d3-8a22
+R3
+o-quiet -auto_acc_if_foreign -work work -debugdb +acc
+R4
+n@_opt1
+R5
+valu_core
+Z6 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z7 !s110 1790733917
+!i10b 1
+!s100 TYO98h>Dh5fOokjMiQiDN1
+I;zGa9oeHJjLRoV<;PP6aI3
+S1
+R1
+w1790729636
+8/home/bao/my_project/calculator/rtl/alu_core.sv
+F/home/bao/my_project/calculator/rtl/alu_core.sv
+!i122 1
+L0 1 35
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2021.2_1;73
+r1
+!s85 0
+31
+Z10 !s108 1790733916.000000
+Z11 !s107 /home/bao/my_project/calculator/tc/tc_basic_arithmetic.sv|/home/bao/my_project/calculator/tb/tb_calculator_top.sv|/home/bao/my_project/calculator/rtl/alu_core.sv|/home/bao/my_project/calculator/rtl/storage_unit.sv|/home/bao/my_project/calculator/rtl/calculator_top.sv|
+Z12 !s90 -sv|-f|/home/bao/my_project/calculator/compile.f|+incdir+/home/bao/my_project/calculator/rtl|+incdir+/home/bao/my_project/calculator/tc|
+!i113 0
+Z13 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z14 !s92 -sv +incdir+/home/bao/my_project/calculator/rtl +incdir+/home/bao/my_project/calculator/tc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vcalculator_top
+R6
+R7
+!i10b 1
+!s100 Sbo8cOJTbozcJdQ9HR6S11
+IV@Z9TOYL]h>[So@d76`2A0
+S1
+R1
+w1790729658
+8/home/bao/my_project/calculator/rtl/calculator_top.sv
+F/home/bao/my_project/calculator/rtl/calculator_top.sv
+!i122 1
+L0 1 66
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R4
+vstorage_unit
+R6
+R7
+!i10b 1
+!s100 2f5c44b:EOc57;EnVW]jN3
+IBePioATB?NH8lnMOALcN[0
+S1
+R1
+w1790729613
+8/home/bao/my_project/calculator/rtl/storage_unit.sv
+F/home/bao/my_project/calculator/rtl/storage_unit.sv
+!i122 1
+L0 1 31
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R4
+vtb_calculator_top
+R6
+R7
+!i10b 1
+!s100 ^Q=m:KEeP^16Gg;]YE<d>1
+I>OL=mz;;Lm;ST3f>1AliV3
+S1
+R1
+w1790732412
+8/home/bao/my_project/calculator/tb/tb_calculator_top.sv
+F/home/bao/my_project/calculator/tb/tb_calculator_top.sv
+F/home/bao/my_project/calculator/tc/tc_basic_arithmetic.sv
+!i122 1
+L0 3 167
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R4

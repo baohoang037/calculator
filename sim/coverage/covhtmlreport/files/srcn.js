@@ -1,0 +1,2 @@
+var g_data = ["","/home/bao/my_project/calculator/tb/tb_calculator_top.sv","/home/bao/my_project/calculator/rtl/calculator_top.sv","/home/bao/my_project/calculator/rtl/storage_unit.sv","/home/bao/my_project/calculator/rtl/alu_core.sv","/home/bao/my_project/calculator/tc/tc_basic_arithmetic.sv"];
+processSrcNamesData(g_data);
