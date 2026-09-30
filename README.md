@@ -143,12 +143,37 @@ Verification achieved **100.00% Coverage Closure** across all physical, structur
 ├── config.mk                           # Environment paths & EDA tool configurations
 ├── Makefile                            # Automated build, simulation & regression script
 └── README.md                           # Comprehensive project documentation
+```
 
-## Author
+---
 
-| Name | Hoàng Ngọc Gia Bão |
-| :--- | :--- |
-| **University** | FPT University |
-| **Email** | [baohoang037@gmail.com](mailto:baohoang037@gmail.com) |
-| **LinkedIn** | [linkedin.com/in/hoang-ngoc-gia-bao-883124235](https://www.linkedin.com/in/hoang-ngoc-gia-bao-883124235) |
-| **GitHub** | [github.com/baohoang037](https://github.com/baohoang037) |
+<a id="author"></a>
+
+## 👨‍💻 Author
+
+<table>
+  <tr>
+    <td align="center">
+      <h3>⚡ Hoàng Ngọc Gia Bão</h3>
+      <p><b>Integrated Circuit Design · FPT University</b></p>
+      <p>🧩 RTL Design &nbsp; · &nbsp; 🔬 Design Verification &nbsp; · &nbsp; 🧮 FPGA</p>
+      <p>
+        <img src="https://img.shields.io/badge/RTL-SystemVerilog-1B365D?style=for-the-badge" alt="RTL: SystemVerilog">
+        <img src="https://img.shields.io/badge/Verification-QuestaSim-008B9A?style=for-the-badge" alt="Verification: QuestaSim">
+        <img src="https://img.shields.io/badge/FPGA-Intel%20Quartus-E05A47?style=for-the-badge" alt="FPGA: Intel Quartus">
+      </p>
+      <hr>
+      <p><b>📬 Connect with me</b></p>
+      <p>
+        <a href="mailto:baohoang037@gmail.com"><img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge" alt="Email Gia Bão"></a>
+        <a href="https://www.linkedin.com/in/hoang-ngoc-gia-bao-883124235/"><img src="https://img.shields.io/badge/LinkedIn-View%20Profile-0A66C2?style=for-the-badge" alt="Gia Bão on LinkedIn"></a>
+        <a href="https://github.com/baohoang037"><img src="https://img.shields.io/badge/GitHub-baohoang037-24292F?style=for-the-badge&logo=github&logoColor=white" alt="Gia Bão on GitHub"></a>
+      </p>
+      <p>
+        📧 <a href="mailto:baohoang037@gmail.com">baohoang037@gmail.com</a><br>
+        🔗 <a href="https://www.linkedin.com/in/hoang-ngoc-gia-bao-883124235/">www.linkedin.com/in/hoang-ngoc-gia-bao-883124235</a><br>
+        🐙 <a href="https://github.com/baohoang037">github.com/baohoang037</a>
+      </p>
+    </td>
+  </tr>
+</table>
